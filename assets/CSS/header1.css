@@ -1,0 +1,29 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+}
+.navbar-brand img{
+    width: 80px;
+    height: auto;
+}
+.mrg_top{
+    margin-top: 130px;
+}
+.card-body>ul{
+    list-style: circle;
+}
+
+.card-body>ul>li:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0056b3;
+}
+.btn-left{
+    text-align: left!important;
+}
+.table td, .table th{
+    vertical-align: middle!important;
+}
