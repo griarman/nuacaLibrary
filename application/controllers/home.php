@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class home extends CI_Controller
+class Home extends CI_Controller
 {
     public function __construct()
     {
@@ -16,7 +16,7 @@ class home extends CI_Controller
         {
             $data['faculties'][$key]['chairs'] = $this->home_model->getcharts($value['id']);
         }
-        $this->load->view('header1', $data);
+        $this->load->view('header', $data);
         $this->load->view('home');
 
     }
