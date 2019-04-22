@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title ?></title>
     <script src="../assets/JS/jquery-3.3.1.min.js"></script>
     <link rel="icon"  href="../favicon.png">
@@ -34,7 +35,14 @@
                     <div><b>Փոխել</b></div>
                     <div><b>Ջնջել</b></div>
                 </div>
-
+                <?php foreach ($faculties as $key => $value): ?>
+                <div class="faculty d-flex">
+                    <div class="id"><?= $value['id']?></div>
+                    <div class="facultyName"><?= $value['name']?></div>
+                    <div class="edit"><i class="fas fa-pen-alt"></i></div>
+                    <div class="del"><i class="fas fa-trash-alt"></i></div>
+                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

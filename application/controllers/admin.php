@@ -25,13 +25,17 @@ class Admin extends CI_Controller
     }
     public function home()
     {
+        
         if(empty($_COOKIE['tk']) || $this->admin_model->checkCookie($_COOKIE['tk'], time()))
         {
             redirect(base_url().'admin');
             die;
         }
+        $this->load->model('add_faculty_model');
+
         $this->admin_model->delExpiredTokens();
         $data['title'] = 'Գլխավոր';
+        $data['faculties'] = $this->add_faculty_model->getFaculties() ;
         $this->load->view('admin/home',$data);
 //        $this->load->view('admin/menu');
 

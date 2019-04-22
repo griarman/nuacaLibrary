@@ -10,7 +10,11 @@
     border: 1px solid #007bff;
     height: 30px;
     padding: 0 5px;
-
+    transition: all .2s linear;
+}
+.myBtn:hover{
+    color: #fff;
+    background: #007bff;
 }
 .myInp{
     box-sizing: border-box;
@@ -38,17 +42,47 @@ label + .myInp{
 }
 .faculties>.header>div{
     border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
     text-align: center;
+    padding: 5px;
 }
 .faculties>.header>div:first-of-type, .id{
     width: 10%;
 }
-.faculties>.header>div:nth-of-type(2), .faculty{
+.faculties>.header>div:nth-of-type(2), .facultyName{
     width: 50%;
 }
 .faculties>.header>div:last-of-type, .faculties>.header>div:nth-of-type(3), .edit, .del{
     width: 20%;
 }
-.faculties>.header>div:last-of-type{
+.faculties>.header>div:last-of-type,del{
     border: 0;
+    border-bottom: 1px solid #aaa;
+}
+.faculties>div:last-of-type>div{
+    border-bottom: 0;
+}
+
+.faculty{
+    max-height: 50px;
+    align-items: stretch;
+    height: 50px;
+}
+.facultyName{
+    padding-left: 5px;
+}
+.id , .edit , .del{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+.faculty>div{
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+.faculty>div:last-of-type{
+    border-right: 0;
+}
+.edit , .del{
+    cursor: pointer;
 }

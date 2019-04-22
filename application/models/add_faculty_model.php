@@ -6,7 +6,14 @@
  * Time: 04:05
  */
 
-class add_faculty_model
+class add_faculty_model extends CI_Model
 {
-
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    public function getFaculties()
+    {
+        return $this->db->get('faculty')->result_array();
+    }
 }
