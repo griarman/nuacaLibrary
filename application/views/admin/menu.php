@@ -12,7 +12,7 @@
             </div>
         </div>
     <section><a href="home"><i class="fas fa-plus"></i> Ավելացնել ֆակուլտետ </a></section>
-    <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել ամբիոն </a></section>
+    <section><a href="chairs"><i class="fas fa-plus"></i> Ավելացնել ամբիոն </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել առարկա </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել գիրք </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել ուսանող </a></section>

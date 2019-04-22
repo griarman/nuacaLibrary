@@ -6,10 +6,6 @@ class add_faculty_model extends CI_Model
     {
         parent::__construct();
     }
-    public function getFaculties()
-    {
-        return $this->db->get('faculty')->result_array();
-    }
     public function checkFaculty($name)
     {
         return $this->db->get_where('faculty', ['name'=>$name])->num_rows();
