@@ -2,8 +2,15 @@
     $arr = ['home', 'chairs', 'subject', 'books', 'students'];
     $path =  explode('/' ,$_SERVER['PATH_INFO'])[2];
 ?>
-<div class="col-md-2 menu">
-    <div><b><i class="fas fa-cog"></i> Մենյու</b></div>
+<div class="col-md-3 menu">
+    <div>
+        <div class="header">
+            <div>
+                <b><i class="fas fa-cog"></i> Մենյու</b>
+            </div>
+            <div><i class="fas fa-sign-out-alt" title="Դուրս գալ"></i></div>
+            </div>
+        </div>
     <section><a href="home"><i class="fas fa-plus"></i> Ավելացնել ֆակուլտետ </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել ամբիոն </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել առարկա </a></section>

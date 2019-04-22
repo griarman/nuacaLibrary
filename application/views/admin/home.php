@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="../assets/css/adminMenu.css">
     <link rel="stylesheet" href="../assets/css/faculty.css">
     <script src="../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/faculty.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
@@ -22,11 +24,13 @@
 <div class="container-fluid">
     <div class="row">
        <?php require_once 'menu.php' ?>
-        <div class="offset-md-2 col-md-4">
-            <div class="mt-5 myForm">
+        <div class="offset-md-2 col-md-7">
+            <div class="mt-5 label text-center">
                 <label for="faculty">Ավելացնել ֆակուլտետ</label>
+            </div>
+            <div class=" myForm">
                 <input type="text" id="faculty" class="myInp" placeholder="Ֆակուլտետ">
-                <button type="button" class="myBtn">Ավելացնել</button>
+                <button type="button" class="myBtn" id="addFaculty">Ավելացնել</button>
             </div>
             <div class="faculties mt-5">
                 <div class="header d-flex">
@@ -36,7 +40,7 @@
                     <div><b>Ջնջել</b></div>
                 </div>
                 <?php foreach ($faculties as $key => $value): ?>
-                <div class="faculty d-flex">
+                <div class="faculty d-flex" id="<?= $value['id']?>">
                     <div class="id"><?= $value['id']?></div>
                     <div class="facultyName"><?= $value['name']?></div>
                     <div class="edit"><i class="fas fa-pen-alt"></i></div>

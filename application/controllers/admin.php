@@ -16,6 +16,11 @@ class Admin extends CI_Controller
     }
     public function index()
     {
+        if(!empty($_COOKIE['tk']) && !$this->admin_model->checkCookie($_COOKIE['tk'], time()))
+        {
+            redirect(base_url().'admin/home');
+            die;
+        }
         $data['error'] = $this->session->error;
         $data['title'] = 'Նույնականացում';
         $this->load->view('admin/login',$data);

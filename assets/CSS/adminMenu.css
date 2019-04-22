@@ -4,6 +4,13 @@
     color: white;
     height: 100vh;
 }
+.menu .header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+}
 section{
     line-height: 30px;
     cursor: pointer;
@@ -15,11 +22,6 @@ section:hover, section.active{
 
 section a, section a:visited{
     color: white!important;
-}
-.menu div{
-    padding: 10px 0;
-    border-bottom: 1px solid #fff;
-
 }
 section i, .menu>div i{
     margin-right: 5px;
