@@ -1,0 +1,54 @@
+/*  Form    */
+.myForm{
+
+    display: flex;
+    justify-content: center;
+}
+.myBtn{
+    background: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    height: 30px;
+    padding: 0 5px;
+
+}
+.myInp{
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #A9A9A9;
+    border-right: 0;
+    text-indent: 10px;
+}
+.myForm label{
+    cursor: pointer;
+}
+label + .myInp{
+    margin-left: 15px;
+}
+.myInp + .myBtn{
+    margin-left: 0;
+}
+
+/*  Faculties   */
+
+.faculties{
+    min-width: 300px;
+    max-width: 500px;
+    border: 1px solid #aaa;
+}
+.faculties>.header>div{
+    border-right: 1px solid #aaa;
+    text-align: center;
+}
+.faculties>.header>div:first-of-type, .id{
+    width: 10%;
+}
+.faculties>.header>div:nth-of-type(2), .faculty{
+    width: 50%;
+}
+.faculties>.header>div:last-of-type, .faculties>.header>div:nth-of-type(3), .edit, .del{
+    width: 20%;
+}
+.faculties>.header>div:last-of-type{
+    border: 0;
+}

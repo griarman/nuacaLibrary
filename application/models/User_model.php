@@ -19,6 +19,11 @@ class User_model extends CI_Model
             'password' => $password
         ]);
 
-        return $response->num_rows() ? $response->row_array() : null;
+        return $response->num_rows();
+    }
+    public function addCookie($token, $time)
+    {
+        $data = ['token'=>$token, 'expireDate' => $time];
+        $this->db->insert('adminToken', $data);
     }
 }

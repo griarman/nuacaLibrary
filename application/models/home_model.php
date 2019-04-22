@@ -9,7 +9,6 @@ class Home_model extends CI_Model
     }
     public function getCharts($id = null)
     {
-
         return $this->db->get_where('chairs',['facultyId' => $id])->result_array();
     }
 }

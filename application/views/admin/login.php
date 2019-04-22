@@ -22,8 +22,8 @@
         </div>
 
         <form action="Authorization/login" method="post">
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Մուտքանուն" myRequired>
-          <input type="text" id="password" class="fadeIn third" name="password" placeholder="Գաղտնաբառ" myRequired>
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Մուտքանուն" myRequired value="admin">
+          <input type="password" id="password" class="fadeIn third" name="password" placeholder="Գաղտնաբառ" myRequired value="admin">
           <input type="submit" class="fadeIn fourth" value="Մուտք գործել" id="enter">
         </form>
         <div class="error">
