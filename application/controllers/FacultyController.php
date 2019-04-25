@@ -1,6 +1,6 @@
 <?php
 
-class AdminController extends CI_Controller
+class FacultyController extends CI_Controller
 {
     public function __construct()
     {
@@ -33,10 +33,15 @@ class AdminController extends CI_Controller
         $name = addslashes(trim($this->input->post('name', true)));
         if($this->add_faculty_model->checkFacultyId($id))
         {
-            echo $this->add_faculty_model->updFaculty($id, $name);
+            if(!$this->add_faculty_model->checkFacultyName($id, $name))
+            {
+                echo $this->add_faculty_model->updFaculty($id, $name);
+                die;
+            }
+            echo 'error1';
             die;
         }
         echo 'error';
-
     }
+
 }

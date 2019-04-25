@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: grigo
- * Date: 23/04/2019
- * Time: 02:22
- */
 
 class Global_model extends CI_Model
 {

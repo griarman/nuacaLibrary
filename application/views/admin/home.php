@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,6 +48,8 @@
                 </div>
                 <?php endforeach; ?>
             </div>
+
         </div>
     </div>
 </div>
+

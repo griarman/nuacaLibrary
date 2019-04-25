@@ -25,4 +25,11 @@ section a, section a:visited{
 }
 section i, .menu>div i{
     margin-right: 5px;
+    color: white!important;
+}
+@media (max-width: 580px) {
+    .menu{
+        height: 260px;
+        width: 100%;
+    }
 }

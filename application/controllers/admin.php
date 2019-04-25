@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: grigo
- * Date: 12/04/2019
- * Time: 20:35
- */
+
 
 class Admin extends CI_Controller
 {
@@ -36,7 +31,6 @@ class Admin extends CI_Controller
         $data['title'] = 'Գլխավոր';
         $data['faculties'] = $this->global_model->getFaculties() ;
         $this->load->view('admin/home',$data);
-
     }
     public function chairs()
     {
@@ -55,5 +49,11 @@ class Admin extends CI_Controller
             redirect(base_url().'admin');
             die;
         }
+    }
+    public function exit()
+    {
+        $this->admin_model->delCookie($_COOKIE['tk']);
+        setcookie('tk','',1,'/');
+        redirect(base_url().'admin');
     }
 }

@@ -1,0 +1,79 @@
+#addInputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#addChairs>.header{
+    font-size: 25px;
+
+}
+.myBtn{
+    background: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    height: 30px;
+    padding: 0 5px;
+    transition: all .2s linear;
+}
+.myBtn:hover{
+    color: #fff;
+    background: #007bff;
+}
+.myInp{
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #A9A9A9;
+    border-right: 0;
+    border-left: 0;
+    text-indent: 10px;
+}
+#showChairs, #addChairs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#faculty{
+    width: 175px;
+    height: 30px;
+}
+.facultyHeader{
+    width: 450px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+.facultyHeader>nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.facultyHeader>nav>div{
+    transition: all .5s linear;
+}
+.opened {
+    transform: rotate(180deg);
+}
+@media( max-width: 768px){
+    .facultyHeader{
+        width: 300px;
+
+    }
+    .facultyHeader>nav {
+        word-break: break-word;
+    }
+    #addInputs{
+        flex-direction: column;
+        align-items: center;
+    }
+    .myInp{
+        border: 1px solid #A9A9A9!important;
+        border-top:0;
+    }
+    .myBtn{
+        width: inherit;
+    }
+    #addChairs>.header{
+        text-align: center;
+    }
+}

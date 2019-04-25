@@ -1,6 +1,6 @@
 <?php
 
-class add_faculty_model extends CI_Model
+class Add_faculty_model extends CI_Model
 {
     public function __construct()
     {
@@ -19,6 +19,10 @@ class add_faculty_model extends CI_Model
     public function checkFacultyId($id)
     {
         return $this->db->get_where('faculty',['id' => $id])->num_rows();
+    }
+    public function checkFacultyName($id, $name)
+    {
+        return $this->db->get_where('faculty',['name' => $name, 'id!=' => $id])->num_rows();
     }
     public function delFaculty($id)
     {

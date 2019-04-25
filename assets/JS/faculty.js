@@ -9,7 +9,7 @@ $(document).ready(function(){
             );
             return;
         }
-        myAjax('/nuacaLibrary/AdminController/addFaculty', { newFaculty });
+        myAjax('/nuacaLibrary/FacultyController/addFaculty', { newFaculty });
     });
     $('.del').click(delFaculty);
     $('.edit').click(updFaculty);
@@ -21,10 +21,10 @@ $(document).ready(function(){
             dataType,
             data
         }).done((res) => {
-            if(url === '/nuacaLibrary/AdminController/addFaculty'){
+            if(url === '/nuacaLibrary/FacultyController/addFaculty'){
                 addFaculty(res.trim(), data.newFaculty);
             }
-            else if(url === '/nuacaLibrary/AdminController/delFaculty')
+            else if(url === '/nuacaLibrary/FacultyController/delFaculty')
             {
                 if(res === 'error'){
                     Swal.fire(
@@ -36,12 +36,20 @@ $(document).ready(function(){
                 }
                 delFacultyDone(data.id);
             }
-            else if(url === '/nuacaLibrary/AdminController/updFaculty')
+            else if(url === '/nuacaLibrary/FacultyController/updFaculty')
             {
                 if(res === 'error'){
                     Swal.fire(
                         'Կներեք փոփոխությունն չհաջողվեց!',
                         'Փորձեք նորից մի փոքր ուշ!',
+                        'error'
+                    );
+                    return;
+                }
+                else if(res === 'error1'){
+                    Swal.fire(
+                        'Նման անունով ֆակուլտետ արդեն գոյություն ունի!',
+                        'Փորձեք մեկ այլ անուն!',
                         'error'
                     );
                     return;
@@ -96,15 +104,14 @@ $(document).ready(function(){
             if (result.value) {
                 let name = facultyName.text().trim();
                 let id = parentDiv.attr('id');
-                myAjax('/nuacaLibrary/AdminController/updFaculty', { id, name });
-
+                myAjax('/nuacaLibrary/FacultyController/updFaculty', { id, name });
             }
         });
     }
     function updFacultyDone(id){
         let el = $(`#${id}`);
         el.find('.edit').removeClass('save');
-        el.find('facultyName').removeAttr('contenteditable');
+        el.find('.facultyName').removeAttr('contenteditable');
         el.find('.edit').find('i').addClass('fa-pen-alt').removeClass('fa-save');
         Swal.fire(
             'Փոփոխված է!',
@@ -113,12 +120,31 @@ $(document).ready(function(){
         )
     }
     function delFaculty(){
-        let parentDiv = $(this).closest('.faculty');
-        let id = parentDiv.attr('id');
-        myAjax('/nuacaLibrary/AdminController/delFaculty', { id })
+        Swal.fire({
+            title: 'Վստա՞հ եք',
+            text: "Դուք այն անվերադարձ կջնջեք!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Այո ջնջել!',
+            cancelButtonText: 'Ոչ'
+        }).then((result) => {
+            if (result.value) {
+                let parentDiv = $(this).closest('.faculty');
+                let id = parentDiv.attr('id');
+                myAjax('/nuacaLibrary/FacultyController/delFaculty', { id })
+            }
+        });
+
     }
 
     function delFacultyDone(id){
+        Swal.fire(
+            'Ջնջված է!',
+            '',
+            'success'
+        );
         $(`#${id}`).remove();
     }
 });

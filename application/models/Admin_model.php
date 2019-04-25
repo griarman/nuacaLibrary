@@ -28,7 +28,7 @@ class Admin_model extends CI_Model
     }
     public function delCookie($token)
     {
-        $this->db->delete('adminToken',['token'=>$token]);
+        $this->db->delete('adminToken',['token' => $token]);
     }
     public function delExpiredTokens()
     {
