@@ -6,7 +6,6 @@
 }
 #addChairs>.header{
     font-size: 25px;
-
 }
 .myBtn{
     background: none;
@@ -76,7 +75,6 @@
 .mainChairs>section{
     display: flex;
     flex-direction: row;
-    /*text-align: justify;*/
     justify-content: space-between;
     font-size: 14px;
 }

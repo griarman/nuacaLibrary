@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: grigo
- * Date: 20/04/2019
- * Time: 01:34
- */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Authorization extends CI_Controller

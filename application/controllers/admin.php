@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
@@ -25,7 +25,6 @@ class Admin extends CI_Controller
     }
     public function home()
     {
-        
         $this->check();
         $this->load->model('add_faculty_model');
         $data['title'] = 'Գլխավոր';
@@ -44,11 +43,15 @@ class Admin extends CI_Controller
                 $data['faculties'][$key]['chairs'] = $chairs;
             }
         }
-        /*echo '<pre>';
-        print_r($data['faculties']);
-        die;*/
-//        $data['chairs'] = $this->global_model->getChairs();
         $this->load->view('admin/chairs',$data);
+    }
+    public function subject()
+    {
+        $this->check();
+        $this->load->model('add_subject_model');
+        $data['title'] = 'Ավելացնել Առարկա';
+        $data['chairs'] = $this->global_model->getChairs();
+        $this->load->view('admin/subject',$data);
     }
     private function check()
     {

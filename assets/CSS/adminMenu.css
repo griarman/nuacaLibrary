@@ -27,7 +27,7 @@
     margin-right: 5px;
     color: white!important;
 }
-@media (max-width: 580px) {
+@media (max-width: 575px) {
     .menu{
         height: 260px;
         width: 100%;

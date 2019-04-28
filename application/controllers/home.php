@@ -8,7 +8,6 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('home_model');
     }
-
     public function index()
     {
         $data['faculties'] = $this->home_model->getFaculties();

@@ -2,7 +2,7 @@
     $arr = ['home', 'chairs', 'subject', 'books', 'students'];
     $path =  explode('/' ,$_SERVER['PATH_INFO'])[2];
 ?>
-<div class="col-md-3 menu col-sm-3">
+<div class="col-md-3 menu col-sm">
     <div>
         <div class="header">
             <div>
@@ -13,7 +13,7 @@
         </div>
     <section><a href="home"><i class="fas fa-plus"></i> Ավելացնել ֆակուլտետ </a></section>
     <section><a href="chairs"><i class="fas fa-plus"></i> Ավելացնել ամբիոն </a></section>
-    <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել առարկա </a></section>
+    <section><a href="subject"><i class="fas fa-plus"></i> Ավելացնել առարկա </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել գիրք </a></section>
     <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել ուսանող </a></section>
 </div>

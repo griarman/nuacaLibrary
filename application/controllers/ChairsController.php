@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ChairsController extends CI_Controller
 {
@@ -13,8 +13,6 @@ class ChairsController extends CI_Controller
         $name = addslashes(trim($this->input->post('name', true)));
         $facultyId = addslashes(trim($this->input->post('facultyId', true)));
         if(!$this->regexp($name)){
-//            echo $this->regexp($name);
-//            die;
             echo 'error2';
             die;
         }
