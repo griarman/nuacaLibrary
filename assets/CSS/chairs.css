@@ -1,3 +1,4 @@
+/*  Add Part */
 #addInputs{
     display: flex;
     flex-direction: row;
@@ -32,11 +33,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+/*  chairs headers  */
+
 #faculty{
     width: 175px;
     height: 30px;
 }
-.facultyHeader{
+.facultyHeader,.chairs{
     width: 450px;
     border: 1px solid #ccc;
     padding: 5px;
@@ -54,6 +58,39 @@
 .opened {
     transform: rotate(180deg);
 }
+
+/*  Main chairs  */
+.chairs{
+    padding: 0;
+}
+
+.chairs, .mainChairs{
+    border-bottom: 1px solid #ccc;
+}
+.mainChairs:last-of-type{
+    border: 0;
+}
+.mainChairs{
+    padding: 5px;
+}
+.mainChairs>section{
+    display: flex;
+    flex-direction: row;
+    /*text-align: justify;*/
+    justify-content: space-between;
+    font-size: 14px;
+}
+.chairsClosed{
+    display: none;
+}
+.chairsOpened{
+    display: block;
+}
+.chairName{
+    outline: 0;
+    cursor: text;
+}
+/*  media part  */
 @media( max-width: 768px){
     .facultyHeader{
         width: 300px;

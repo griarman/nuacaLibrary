@@ -16,8 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/chairs.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="../assets/fonts/css/all.min.css">
 </head>
 <body>
 
@@ -45,12 +44,25 @@
                     <div id="faculty-<?= $value['id']?>" class="facultyHeader">
                         <nav>
                             <div>
-                                <?= $value['name']?>
+                                <b><?= $value['name']?></b>
                             </div>
                             <div class="closed">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </nav>
+                    </div>
+                    <div class="chairs chairsClosed">
+                        <?php foreach($value['chairs'] as $k => $v) :?>
+                            <div id="chair-<?= $v['id']?>" class="mainChairs">
+                                <section>
+                                    <div class="chairName"><?= $v['name']?></div>
+                                    <div class="changing">
+                                        <div class="chairEdit" title="Փոխել"><i class="fas fa-pen-alt"></i></div>
+                                        <div class="chairDel" title="Ջնջել"><i class="fas fa-trash-alt"></i></div>
+                                    </div>
+                                </section>
+                            </div>
+                        <?php endforeach;?>
                     </div>
                 <?php endforeach;?>
             </div>

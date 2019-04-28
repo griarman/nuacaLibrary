@@ -11,19 +11,19 @@
     border-bottom: 1px solid #fff;
     cursor: pointer;
 }
-section{
+.menu section{
     line-height: 30px;
     cursor: pointer;
     padding: 5px;
 }
-section:hover, section.active{
+.menu section:hover,.menu section.active{
     background: #3B424D;
 }
 
-section a, section a:visited{
+.menu section a, .menu section a:visited{
     color: white!important;
 }
-section i, .menu>div i{
+.menu section i, .menu>div i{
     margin-right: 5px;
     color: white!important;
 }

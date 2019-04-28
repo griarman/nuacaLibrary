@@ -38,7 +38,16 @@ class Admin extends CI_Controller
         $this->load->model('add_faculty_model');
         $data['title'] = 'Ավելացնել Ամբիոն';
         $data['faculties'] = $this->global_model->getFaculties();
-        $data['chairs'] = $this->global_model->getChairs();
+        foreach ($data['faculties'] as $key => $value)
+        {
+            if(!empty($chairs = $this->global_model->getChairs($value['id']))){
+                $data['faculties'][$key]['chairs'] = $chairs;
+            }
+        }
+        /*echo '<pre>';
+        print_r($data['faculties']);
+        die;*/
+//        $data['chairs'] = $this->global_model->getChairs();
         $this->load->view('admin/chairs',$data);
     }
     private function check()

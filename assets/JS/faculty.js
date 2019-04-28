@@ -103,6 +103,15 @@ $(document).ready(function(){
         }).then((result) => {
             if (result.value) {
                 let name = facultyName.text().trim();
+                if(!name){
+                    Swal.fire(
+                        'Անունը դատարկ լինել չի կարող!',
+                        '',
+                        'error'
+                    );
+
+                    return;
+                }
                 let id = parentDiv.attr('id');
                 myAjax('/nuacaLibrary/FacultyController/updFaculty', { id, name });
             }
