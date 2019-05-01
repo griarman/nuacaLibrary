@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../assets/fonts/css/all.min.css">
     <script src="../assets/JS/jquery-3.3.1.min.js"></script>
     <script src="../assets/js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="../assets/js/sweetAlert.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/subject.js"></script>
 </head>
@@ -42,12 +42,12 @@
                     <div><button class="myBtn">Ավելացնել</button></div>
                 </div>
             </div>
+            <div id="showSubjects">
+
+            </div>
         </div>
 
     </div>
 </div>
-</body>
-</html>
-
 </body>
 </html>

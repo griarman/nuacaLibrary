@@ -25,6 +25,7 @@ class Admin extends CI_Controller
     }
     public function home()
     {
+        $this->correct(__FUNCTION__,func_get_args());
         $this->check();
         $this->load->model('add_faculty_model');
         $data['title'] = 'Գլխավոր';
@@ -33,6 +34,7 @@ class Admin extends CI_Controller
     }
     public function chairs()
     {
+        $this->correct(__FUNCTION__,func_get_args());
         $this->check();
         $this->load->model('add_faculty_model');
         $data['title'] = 'Ավելացնել Ամբիոն';
@@ -47,11 +49,24 @@ class Admin extends CI_Controller
     }
     public function subject()
     {
+        $this->correct(__FUNCTION__,func_get_args());
         $this->check();
         $this->load->model('add_subject_model');
         $data['title'] = 'Ավելացնել Առարկա';
         $data['chairs'] = $this->global_model->getChairs();
+        $data['subjects'] = $this->global_model->getSubjects();
+        foreach ($data['subjects'] as $key => $value)
+        {
+            $data['subjects'][$key]['parents'] = $this->global_model->getFullInformation($value['id'])[0];
+        }
         $this->load->view('admin/subject',$data);
+    }
+    private function correct($name,$arr)
+    {
+        if(!empty($arr)){
+            redirect(base_url()."admin/$name");
+            die;
+        }
     }
     private function check()
     {

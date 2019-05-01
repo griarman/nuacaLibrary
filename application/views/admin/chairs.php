@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../assets/css/adminMenu.css">
     <link rel="stylesheet" href="../assets/css/chairs.css">
     <script src="../assets/js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="../assets/js/sweetAlert.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/chairs.js"></script>
     <link rel="stylesheet" href="../assets/fonts/css/all.min.css">

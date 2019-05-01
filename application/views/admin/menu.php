@@ -1,6 +1,13 @@
 <?php
     $arr = ['home', 'chairs', 'subject', 'books', 'students'];
     $path =  explode('/' ,$_SERVER['PATH_INFO'])[2];
+    $pages = [
+      ["home" , 'Ավելացնել ֆակուլտետ' ],
+      ["chairs" , 'Ավելացնել ամբիոն'],
+      ["subject" , 'Ավելացնել առարկա '],
+      ["books" , 'Ավելացնել գիրք '],
+      ["student" , ' Ավելացնել ուսանող ']
+    ];
 ?>
 <div class="col-md-3 menu col-sm">
     <div>
@@ -11,12 +18,11 @@
             <div><a href="exit"><i class="fas fa-sign-out-alt" title="Դուրս գալ"></i></a> </div>
             </div>
         </div>
-    <section><a href="home"><i class="fas fa-plus"></i> Ավելացնել ֆակուլտետ </a></section>
-    <section><a href="chairs"><i class="fas fa-plus"></i> Ավելացնել ամբիոն </a></section>
-    <section><a href="subject"><i class="fas fa-plus"></i> Ավելացնել առարկա </a></section>
-    <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել գիրք </a></section>
-    <section><a href="#"><i class="fas fa-plus"></i> Ավելացնել ուսանող </a></section>
+    <?php foreach($pages as $key => $value):
+        $active = ($key === array_search($path, $arr))? 'active': '';
+        ?>
+    <section class="<?=$active?>">
+        <a href="<?= $value[0]?>"><i class="fas fa-plus"></i><?= $value[1] ?></a>
+    </section>
+    <?php endforeach;?>
 </div>
-<script>
-    document.getElementsByTagName('section')[<?= array_search($path, $arr)?>].classList.add('active');
-</script>

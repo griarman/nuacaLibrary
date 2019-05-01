@@ -41,9 +41,9 @@ $(document).ready(function(){
                     );
                     return;
                 }
-                delFacultyDone(data.id);
+                delChairDone(data.id);
             }
-            else if(url === '/nuacaLibrary/ChairsController/updFaculty') {
+            else if(url === '/nuacaLibrary/ChairsController/updChair') {
                 if(res === 'error'){
                     Swal.fire(
                         'Կներեք փոփոխությունն չհաջողվեց!',
@@ -68,6 +68,12 @@ $(document).ready(function(){
                     );
                     return;
                 }
+                console.log(res);
+                Swal.fire(
+                    'Ամբիոնի անունը փոխված է!',
+                    '',
+                    'success'
+                );
                 updFacultyDone(data.id);
             }
         })
@@ -184,14 +190,12 @@ $(document).ready(function(){
             }
         });
     }
-    function  delFacultyDone(id){
+    function  delChairDone(id){
         Swal.fire(
             'Ջնջված է!',
             '',
             'success'
         );
-        // console.log('aaa', $(`#chair-${id}`));
-        // return;
         $(`#chair-${id}`).remove();
     }
     function checkName(name){

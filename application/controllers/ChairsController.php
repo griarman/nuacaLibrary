@@ -1,8 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once 'globalTrait.php';
 
 class ChairsController extends CI_Controller
 {
+    use GlobalTrait;
     public function __construct()
     {
         parent::__construct();
@@ -16,7 +18,7 @@ class ChairsController extends CI_Controller
             echo 'error2';
             die;
         }
-        elseif(!$this->add_chairs_model->checkChairId($facultyId))
+        elseif(!$this->add_chairs_model->checkFacultyId($facultyId))
         {
             echo 'error1';
             die;
@@ -57,13 +59,5 @@ class ChairsController extends CI_Controller
             die;
         }
         echo 'error';
-    }
-    private function regexp($str, $type = 'name')
-    {
-        $regexp = [
-            'name' => '/^[ա-ֆ\s]{4,150}$/i'
-        ][$type];
-//        echo $regexp;
-        return preg_match($regexp, $str);
     }
 }

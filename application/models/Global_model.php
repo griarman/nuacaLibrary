@@ -15,4 +15,13 @@ class Global_model extends CI_Model
     {
         return ($facultyId)? $this->db->get_where('chairs',['facultyId' => $facultyId])->result_array() :$this->db->get('chairs')->result_array();
     }
+    public function getSubjects($chairId = null)
+    {
+        return ($chairId)? $this->db->get_where('subject',['chairId' => $chairId])->result_array() : $this->db->get('subject')->result_array();
+    }
+    public function getFullInformation($subjectId = NULL)
+    {
+        $query = "SELECT faculty.name as fName,chairs.name as cName FROM `subject`, faculty, chairs WHERE faculty.id = chairs.facultyId AND chairs.id = subject.chairId AND subject.id=$subjectId" ;
+        return $this->db->query($query)->result_array();
+    }
 }

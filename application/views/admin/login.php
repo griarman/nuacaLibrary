@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./assets/css/login.css">
     <link rel="icon"  href="./favicon.png">
     <script src="./assets/JS/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="./assets/js/sweetAlert.js"></script>
     <script src="./assets/JS/login.js"></script>
 </head>
 <body>
@@ -22,15 +22,14 @@
         </div>
 
         <form action="Authorization/login" method="post">
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Մուտքանուն" myRequired value="admin">
-          <input type="password" id="password" class="fadeIn third" name="password" placeholder="Գաղտնաբառ" myRequired value="admin">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Մուտքանուն" myRequired value="admin" maxlength="30">
+          <input type="password" id="password" class="fadeIn third" name="password" placeholder="Գաղտնաբառ" myRequired value="admin" maxlength="30">
           <input type="submit" class="fadeIn fourth" value="Մուտք գործել" id="enter">
         </form>
         <div class="error">
             <?= (isset($error))? $error : ''?>
         </div>
         <div id="formFooter">
-
             <a class="underlineHover" href="#">Մոռացե՞լ եք գաղտնաբառը</a>
         </div>
 
