@@ -21,6 +21,10 @@ class Add_chairs_model extends CI_Model
     {
         return $this->db->get_where('chairs',['id' => $id])->num_rows();
     }
+    public function checkFacultyId($id)
+    {
+        return $this->db->get_where('faculty',['id' => $id])->num_rows();
+    }
     public function checkChairName($id, $name)
     {
         return $this->db->get_where('chairs',['name' => $name, 'id!=' => $id])->num_rows();

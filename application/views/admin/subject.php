@@ -42,11 +42,27 @@
                     <div><button class="myBtn">Ավելացնել</button></div>
                 </div>
             </div>
-            <div id="showSubjects">
-
-            </div>
+            <table id="showSubjects">
+                <tr class="subjects">
+                    <th>Առարկա</th>
+                    <th>Ցույց տալ</th>
+                    <th>Փոխել</th>
+                    <th>Ջնջել</th>
+                </tr>
+                <?php foreach ($subjects as $key => $value):?>
+                    <tr id="subject-<?=$key?>" class="subjects">
+                        <td class="subjectName"><?= $value['name']?></td>
+                        <td class="show"><i class="fas fa-eye" title="Ցույց տալ"></i></td>
+                        <td class="editSubject"><i class="fas fa-pen-alt" title="Փոխել"></i></td>
+                        <td class="delSubject"><i class="fas fa-trash-alt" title="Ջնջել"></i></td>
+                    </tr>
+                <?php endforeach;?>
+            </table>
         </div>
-
+        <div class="col-md mt-5 searchTag">
+            <div class="searchHeader">Որոնել առարկա</div>
+            <div><input type="text" id="search" placeholder="Որոնել"></div>
+        </div>
     </div>
 </div>
 </body>

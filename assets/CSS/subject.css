@@ -34,4 +34,33 @@
     border-left: 0;
     text-indent: 10px;
 }
-/**/
+/*  show subjects   */
+
+#showSubjects{
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+tr,td,th {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+td{
+    text-align: center;
+}
+td *{
+    cursor: pointer;
+}
+
+/*  Search part  */
+#searchTag>input{
+    width: 150px;
+}
+
+.subjectName{
+    text-align: left;
+    cursor: text;
+    max-width: 300px;
+}
+.searchHeader{
+    font-size: 25px;
+}
