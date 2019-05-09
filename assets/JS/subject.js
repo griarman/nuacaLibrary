@@ -1,8 +1,7 @@
 $(document).ready(function(){
     $('.myBtn').click(function(){
         let subject = $(this).closest('#addInputs').find('.myInp').val().trim();
-        let chairId = $('#selectChair')[0].value;
-        console.log(chairId);
+        let chairId = +$('#selectChair')[0].value;
         if(!subject || !chairId){
             Swal.fire(
                 'Լրացրեք անունը և ընտրեք ամբիոնը!',
@@ -14,8 +13,104 @@ $(document).ready(function(){
         if(!checkName(subject)) return;
         myAjax('/nuacaLibrary/SubjectController/addSubject', { subject, chairId });
     });
+    $('#search').keyup(function(e){
+       let text = $(this).val().trim();
+       if(!(/^[ա-ֆ0-9\s]{0,150}$/i.test(text))) {
+           Swal.fire(
+               'Ոչ թույլատրելի սիմվոլներ!',
+               'Թույլատրվում են միայն ա-ֆ, 0-9',
+               'error'
+           );
+           return;
+       }
+       switch(e.which){
+           case 9:
+           case 16:
+           case 17:
+           case 18:
+           case 13:
+           case 37:
+           case 38:
+           case 39:
+           case 40:
+               return;
+       }
+        myAjax('/nuacaLibrary/SubjectController/searchSubjects', { text });
+    });
+    $('.show').click(showInfo);
+    $('.editSubject').click(updateSubject);
+    $('.delSubject').click(remSubject);
+
+    function showInfo() {
+        let faculty = $(this).find('.faculty').text().trim();
+        let chair = $(this).find('.chair').text().trim();
+        console.log(faculty, chair);
+        Swal.fire({
+            title: faculty,
+            type: 'info',
+            text: chair,
+            confirmButtonText:'Լավ'
+        })
+    }
+    function remSubject(){
+        let th = $(this);
+        Swal.fire({
+            title: 'Վստա՞հ եք',
+            text: "Դուք այն անվերադարձ կջնջեք!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Այո ջնջել!',
+            cancelButtonText: 'Ոչ'
+        }).then((result) => {
+            if (result.value) {
+                let subject = th.parent();
+                let id = subject.attr('id').split('-')[1];
+                myAjax('/nuacaLibrary/SubjectController/delSubject', { id })
+            }
+        });
+    }
+    function updateSubject() {
+        let th = $(this);
+        let subject = th.parent();
+        let nameTag = subject.find('.subjectName');
+        if(!th.hasClass('save')){
+            th.addClass('save');
+            nameTag.attr('contenteditable', 'true');
+            th.find('i').removeClass('fa-pen-alt').addClass('fa-save');
+            return;
+        }
+        th.removeClass('save');
+        Swal.fire({
+            title: 'Վստա՞հ եք որ ուզում եք փոխել անունը',
+            text: "Դուք այն անվերադարձ կփոխարինեք!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Այո փոխել!',
+            cancelButtonText: 'Ոչ'
+        }).then((result) => {
+            if (result.value) {
+                let id = subject.attr('id').split('-')[1];
+                let name = nameTag.text().trim();
+                // console.log(id, name);
+                if(!name){
+                    Swal.fire(
+                        'Անունը դատարկ լինել չի կարող!',
+                        '',
+                        'error'
+                    );
+                    return;
+                }
+                checkName(name);
+                myAjax('/nuacaLibrary/SubjectController/updSubject', { id, name });
+            }
+        });
+    }
     function checkName(name){
-        if(!(/^[ա-ֆ\s]{4,150}$/i.test(name))){
+        if(!(/^[ա-ֆ\s0-9]{4,150}$/i.test(name))){
             Swal.fire(
                 'Ոչ թույլատրելի սիմվոլներ!',
                 'Թույլատրվում են միայն ա-ֆ, 0-9 և նվազագույնը 4 սիմվոլ',
@@ -32,7 +127,7 @@ $(document).ready(function(){
             dataType,
             data
         }).done((res) => {
-            switch(res){
+            switch(url){
                 case '/nuacaLibrary/SubjectController/addSubject':
                     addSubject(res, data);
                     break;
@@ -42,13 +137,16 @@ $(document).ready(function(){
                 case '/nuacaLibrary/SubjectController/updSubject':
                     editSubject(res, data.id);
                     break;
+                case '/nuacaLibrary/SubjectController/searchSubjects':
+                    filterSubject(res);
+                    break;
             }
         })
     }
     function addSubject(res, data){
         if(res === 'exists'){
             Swal.fire(
-                'Նման անունով ամբիոն գոյություն ունի!',
+                'Նման անունով առարկա գոյություն ունի!',
                 'Փորձեք մեկ այլ անուն!',
                 'error'
             );
@@ -56,7 +154,7 @@ $(document).ready(function(){
         }
         else if(res === 'error1'){
             Swal.fire(
-                'Լրացրեք անունը և ընտրեք ֆակուլտետը!',
+                'Լրացրեք անունը և ընտրեք ամբիոնը!',
                 'Այս պայմաններն պարտադիր են!',
                 'error'
             );
@@ -71,24 +169,29 @@ $(document).ready(function(){
             return;
         }
         Swal.fire(
-            'Ամբիոնն ավելացված է!',
+            'Առարկան ավելացված է!',
             '',
             'success'
         );
-        return;
-        $(`#faculty-${data.facultyId}`).next().append(`
-            <div id="chair-${res}" class="mainChairs">
-                <section>
-                    <div class="chairName">${data.name}</div>
-                    <div class="changing"></div>
-                </section>
-            </div>
+        res = JSON.parse(res);
+        $('tbody').append(`
+            <tr id="subject-${res['id']}" class="subjects">
+                <td class="subjectName">${data.subject}</td>
+            </tr>
         `);
-        let edit = $(`<div class="chairEdit" title="Փոխել"><i class="fas fa-pen-alt"></i></div>`);
-        let del = $(`<div class="chairDel" title="Ջնջել"><i class="fas fa-trash-alt"></i></div>`);
-        $(`#chair-${res}`).find('.changing').append(edit, del);
-        edit.click(editChair);
-        del.click(delChair);
+        let show = $(`
+            <td class="show"><i class="fas fa-eye" title="Ցույց տալ"></i>
+                <div class="parents">
+                    <div class="faculty">${res['fName']}</div>
+                    <div class="chair">${res['cName']}</div>
+                </div>
+            </td>`);
+        let edit = $(`<td class="editSubject"><i class="fas fa-pen-alt" title="Փոխել"></i></td>`);
+        let del = $(`<td class="delSubject"><i class="fas fa-trash-alt" title="Ջնջել"></i></td>`);
+        $(`#subject-${res['id']}`).append(show,edit, del);
+        show.click(showInfo);
+        edit.click(updateSubject);
+        del.click(remSubject);
         $('.myInp').val('')
     }
     function delSubject(res, id){
@@ -135,17 +238,52 @@ $(document).ready(function(){
         updSubjectDone(id);
     }
     function delSubjectDone(id) {
-
+        let el = $(`#subject-${id}`);
+        el.remove();
     }
-    function updSubjectDone(){
-        let el = $(`#${id}`);
-        el.find('.edit').removeClass('save');
-        el.find('.facultyName').removeAttr('contenteditable');
-        el.find('.edit').find('i').addClass('fa-pen-alt').removeClass('fa-save');
+    function updSubjectDone(id){
+        console.log(id);
+        let el = $(`#subject-${id}`);
+        el.find('.editSubject').removeClass('save');
+        el.find('.subjectName').removeAttr('contenteditable');
+        el.find('.editSubject').find('i').addClass('fa-pen-alt').removeClass('fa-save');
         Swal.fire(
             'Փոփոխված է!',
             'Անունը փոփոխվել է.',
             'success'
         )
+    }
+    function filterSubject(res){
+        if(res === 'error'){
+            Swal.fire(
+                'Ոչ թույլատրելի սիմվոլներ!',
+                'Թույլատրվում են միայն ա-ֆ, 0-9',
+                'error'
+            );
+            return;
+        }
+        res = JSON.parse(res);
+        let tbody = $('tbody');
+        tbody.empty();
+        for(let i = 0; i < res.length; i++){
+            tbody.append(`
+                <tr id="subject-${res[i].id}" class="subjects">
+                    <td class="subjectName">${res[i].name}</td>
+                </tr>
+            `);
+            let show = $(`
+                <td class="show"><i class="fas fa-eye" title="Ցույց տալ"></i>
+                    <div class="parents">
+                        <div class="faculty">${res[i].parents.fName}</div>
+                        <div class="chair">${res[i].parents.cName}</div>
+                    </div>
+                </td>`);
+            let edit = $(`<td class="editSubject"><i class="fas fa-pen-alt" title="Փոխել"></i></td>`);
+            let del = $(`<td class="delSubject"><i class="fas fa-trash-alt" title="Ջնջել"></i></td>`);
+            $(`#subject-${res[i].id}`).append(show,edit, del);
+            show.click(showInfo);
+            edit.click(updateSubject);
+            del.click(remSubject);
+        }
     }
 });

@@ -161,10 +161,11 @@ $(document).ready(function(){
         });
     }
     function updFacultyDone(id){
-        let el = $(`#${id}`);
-        el.find('.edit').removeClass('save');
-        el.find('.facultyName').removeAttr('contenteditable');
-        el.find('.edit').find('i').addClass('fa-pen-alt').removeClass('fa-save');
+        let el = $(`#chair-${id}`);
+        console.log(el);
+        el.find('.chairEdit').removeClass('save');
+        el.find('.chairName').removeAttr('contenteditable');
+        el.find('.chairEdit').find('i').addClass('fa-pen-alt').removeClass('fa-save');
         Swal.fire(
             'Փոփոխված է!',
             'Անունը փոփոխվել է.',

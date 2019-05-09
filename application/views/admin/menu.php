@@ -24,7 +24,7 @@
         $active = ($key === array_search($path, $arr))? 'active': '';
         ?>
     <section class="<?=$active?>">
-        <a href="<?= $value[0]?>"><i class="fas fa-plus"></i><?= $value[1] ?></a>
+        <a href="<?= $value[0]?>"><i class="fas fa-plus"></i><?= $value[1]?></a>
     </section>
     <?php endforeach;?>
     </div>

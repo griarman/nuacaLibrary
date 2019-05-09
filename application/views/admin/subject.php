@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <?php foreach ($subjects as $key => $value):?>
-                    <tr id="subject-<?=$key?>" class="subjects">
+                    <tr id="subject-<?=$value['id']?>" class="subjects">
                         <td class="subjectName"><?= $value['name']?></td>
                         <td class="show"><i class="fas fa-eye" title="Ցույց տալ"></i>
                             <div class="parents">
@@ -70,7 +70,6 @@
                 <?php endforeach;?>
             </table>
         </div>
-
     </div>
 </div>
 </body>

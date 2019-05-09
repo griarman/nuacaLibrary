@@ -25,7 +25,7 @@
         <?php require_once 'menu.php' ?>
         <div class="offset-md-3 col-md-9 col-sm mt-5">
             <div id="addChairs" class="mt-5">
-                <div class="header text-center">Ավելացնել ամբիոն</div>
+                <div class="header text-center"><label for="l">Ավելացնել ամբիոն</label></div>
                 <div id="addInputs">
                     <div>
                         <select id="faculty" title="Ընտրել ֆակուլտետ">
@@ -35,7 +35,7 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div><input type="text" class="myInp"></div>
+                    <div><input type="text" class="myInp" id="l"></div>
                     <div><button class="myBtn">Ավելացնել</button></div>
                 </div>
             </div>

@@ -21,6 +21,10 @@ class Add_subject_model extends CI_Model
     {
         return $this->db->get_where('chairs', ['id' => $id])->num_rows();
     }
+    public function checkSubjectId($id)
+    {
+        return $this->db->get_where('subject', ['id' => $id])->num_rows();
+    }
     public function checkSubjectName($id, $name)
     {
         return $this->db->get_where('subject',['name' => $name, 'id!=' => $id])->num_rows();
