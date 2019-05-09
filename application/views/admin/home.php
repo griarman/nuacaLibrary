@@ -24,8 +24,8 @@
 <div class="container-fluid">
     <div class="row">
        <?php require_once 'menu.php' ?>
-        <div class="offset-md-2 col-md-7">
-            <div class="mt-5 label text-center">
+        <div class="offset-md-3 col-md-9 col-sm mt-5 all">
+            <div class="label text-center">
                 <label for="faculty">Ավելացնել ֆակուլտետ</label>
             </div>
             <div class=" myForm">

@@ -1,4 +1,8 @@
 /* Add part*/
+/*.all{*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+/*}*/
 #addSubject>.header{
     font-size: 25px;
 }
@@ -52,8 +56,20 @@ td *{
 }
 
 /*  Search part  */
-#searchTag>input{
-    width: 150px;
+.searchTag{
+    /*width: 300px;*/
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.searchInput{
+    min-width: 300px;
+}
+.searchTag input{
+    width: 100%;
+    text-align: center;
 }
 
 .subjectName{
@@ -63,4 +79,32 @@ td *{
 }
 .searchHeader{
     font-size: 25px;
+}
+.parents{
+    display: none;
+}
+
+@media (max-width: 550px) {
+    .all{
+        padding: 0;
+    }
+    .searchTag{
+        text-align: center;
+        margin-top: 10px!important;
+        padding: 0;
+    }
+    #addInputs{
+        flex-direction: column!important;
+    }
+    #addInputs *, #search{
+        width: 100%!important;
+        height: 30px;
+    }
+    #addInputs input, #search{
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    select{
+        max-width: 100%!important;
+    }
 }

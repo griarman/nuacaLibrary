@@ -23,7 +23,7 @@
 <div class="container-fluid">
     <div class="row">
         <?php require_once 'menu.php' ?>
-        <div class="col-md-7  col-sm-7">
+        <div class="offset-md-3 col-md-9 col-sm mt-5">
             <div id="addChairs" class="mt-5">
                 <div class="header text-center">Ավելացնել ամբիոն</div>
                 <div id="addInputs">

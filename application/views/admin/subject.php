@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row">
         <?php require_once 'menu.php' ?>
-        <div class="col-md-7 col-sm mt-5">
+        <div class="offset-md-3 col-md-9 col-sm mt-5 all">
             <div id="addSubject">
                 <div class="header text-center">Ավելացնել Առարկա</div>
                 <div id="addInputs">
@@ -37,32 +37,40 @@
                         </select>
                     </div>
                     <div>
-                        <input type="text" class="myInp">
+                        <input type="text" class="myInp" placeholder="Ավելացնել առարկա">
                     </div>
                     <div><button class="myBtn">Ավելացնել</button></div>
                 </div>
             </div>
-            <table id="showSubjects">
-                <tr class="subjects">
-                    <th>Առարկա</th>
-                    <th>Ցույց տալ</th>
-                    <th>Փոխել</th>
-                    <th>Ջնջել</th>
-                </tr>
+            <div class="col-md mt-5 searchTag">
+                <div class="searchHeader">Որոնել առարկա</div>
+                <div class="searchInput"><input type="text" id="search" placeholder="Որոնել"></div>
+            </div>
+            <table id="showSubjects" class="table table-dark table-hover table-striped">
+                <thead>
+                    <tr class="subjects">
+                        <th scope="col">#Առարկա</th>
+                        <th scope="col">Ցույց տալ</th>
+                        <th scope="col">Փոխել</th>
+                        <th scope="col">Ջնջել</th>
+                    </tr>
+                </thead>
                 <?php foreach ($subjects as $key => $value):?>
                     <tr id="subject-<?=$key?>" class="subjects">
                         <td class="subjectName"><?= $value['name']?></td>
-                        <td class="show"><i class="fas fa-eye" title="Ցույց տալ"></i></td>
+                        <td class="show"><i class="fas fa-eye" title="Ցույց տալ"></i>
+                            <div class="parents">
+                                <div class="faculty"><?=$value['parents']['fName']?></div>
+                                <div class="chair"><?=$value['parents']['cName']?></div>
+                            </div>
+                        </td>
                         <td class="editSubject"><i class="fas fa-pen-alt" title="Փոխել"></i></td>
                         <td class="delSubject"><i class="fas fa-trash-alt" title="Ջնջել"></i></td>
                     </tr>
                 <?php endforeach;?>
             </table>
         </div>
-        <div class="col-md mt-5 searchTag">
-            <div class="searchHeader">Որոնել առարկա</div>
-            <div><input type="text" id="search" placeholder="Որոնել"></div>
-        </div>
+
     </div>
 </div>
 </body>

@@ -1,6 +1,12 @@
+/*  All    */
+.all{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /*  Form    */
 .myForm{
-
     display: flex;
     justify-content: center;
 }
@@ -71,9 +77,13 @@ label + .myInp{
     align-items: stretch;
     height: 50px;
 }
+.label{
+    font-size: 25px;
+}
 .facultyName{
     padding-left: 5px;
     overflow-y: auto;
+    word-break: break-all;
 }
 .facultyName::-webkit-scrollbar-track
 {
@@ -108,4 +118,13 @@ label + .myInp{
 }
 .edit , .del{
     cursor: pointer;
+}
+
+@media (max-width: 767px){
+    .faculties, .all{
+        width: 100%;
+    }
+    .faculties{
+        min-width: 0;
+    }
 }
