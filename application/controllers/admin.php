@@ -53,13 +53,21 @@ class Admin extends CI_Controller
         $this->check();
         $this->load->model('add_subject_model');
         $data['title'] = 'Ավելացնել Առարկա';
-        $data['chairs'] = $this->global_model->getChairs();
         $data['subjects'] = $this->global_model->getSubjects();
         foreach ($data['subjects'] as $key => $value)
         {
             $data['subjects'][$key]['parents'] = $this->global_model->getFullInformation($value['id'])[0];
         }
         $this->load->view('admin/subject',$data);
+    }
+    public function books()
+    {
+        $this->correct(__FUNCTION__,func_get_args());
+        $this->check();
+        $this->load->model('add_book_model');
+        $data['subjects'] = $this->global_model->getSubjects();
+        $data['title'] = 'Ավելացնել Գիրք';
+        $this->load->view('admin/books',$data);
     }
     private function correct($name,$arr)
     {

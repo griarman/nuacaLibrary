@@ -14,6 +14,7 @@ $(document).ready(function(){
         myAjax('/nuacaLibrary/SubjectController/addSubject', { subject, chairId });
     });
     $('#search').keyup(function(e){
+        console.log(e);
        let text = $(this).val().trim();
        if(!(/^[ա-ֆ0-9\s]{0,150}$/i.test(text))) {
            Swal.fire(
@@ -21,6 +22,7 @@ $(document).ready(function(){
                'Թույլատրվում են միայն ա-ֆ, 0-9',
                'error'
            );
+           $(this).val(text.slice(0, text.length - 1));
            return;
        }
        switch(e.which){
@@ -242,7 +244,6 @@ $(document).ready(function(){
         el.remove();
     }
     function updSubjectDone(id){
-        console.log(id);
         let el = $(`#subject-${id}`);
         el.find('.editSubject').removeClass('save');
         el.find('.subjectName').removeAttr('contenteditable');

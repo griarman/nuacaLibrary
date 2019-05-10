@@ -1,0 +1,104 @@
+/*  Header  */
+.bookHeader{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+/*   Books   */
+
+#addBook{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#addBook>div{
+    background: #F8F8F8;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 20px;
+    flex-basis: 40%;
+}
+
+/*      Left    */
+
+#addBook>div>.subHeader{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+}
+.myRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+}
+.myRow>div{
+    display: flex;
+    flex-direction: column;
+}
+.myRow>div input{
+    width: 100%;
+    padding: 5px;
+}
+.myRow>div button{
+    width: 100%;
+    padding: 5px;
+}
+.myRow>div label{
+    color: #D1D1D1;
+    font-size: 14px;
+    font-weight: bold;
+}
+.myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button{
+    max-width: 400px;
+    width: 40vw;
+}
+.myRow>div textarea{
+    padding: 5px;
+}
+#keyWords{
+    margin-top: 5px;
+    min-height: 50px;
+    border: 1px solid #ddd;
+    width: 100%;
+    background: #f3f3f3;
+}
+/*      Right    */
+#right input[type=file]{
+    display: none;
+}
+#addImageLabel img, #addFileLabel i{
+    max-width: 200px;
+    font-size: 100px;
+    color: #888;
+    height: auto;
+    transition: all .5s linear;
+}
+.icons{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+#myRotate{
+    font-size: 50px!important;
+    transform: rotateX(180deg);
+}
+#addFileLabel{
+    margin-top: 20px;
+}
+#addImageLabel img:hover, #addFileLabel i:hover{
+    transform: scale(2);
+}
+@media(max-width: 767px){
+    .myRow>div{
+        width: 100%;
+    }
+    .myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button{
+        max-width: 400px;
+        width: 100vw;
+    }
+}
+
+
