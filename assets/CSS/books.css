@@ -30,9 +30,12 @@
 .myRow{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding-bottom: 5px;
+}
+.myCenter{
+    justify-content: center!important;
 }
 .myRow>div{
     display: flex;
@@ -50,6 +53,7 @@
     color: #D1D1D1;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
 }
 .myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button{
     max-width: 400px;
@@ -57,6 +61,7 @@
 }
 .myRow>div textarea{
     padding: 5px;
+    max-height: 300px;
 }
 #keyWords{
     margin-top: 5px;
@@ -64,6 +69,20 @@
     border: 1px solid #ddd;
     width: 100%;
     background: #f3f3f3;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.keyTag{
+    background: #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+.del{
+    cursor: pointer;
+    margin-left: 5px;
 }
 /*      Right    */
 #right input[type=file]{
@@ -88,7 +107,7 @@
 #addFileLabel{
     margin-top: 20px;
 }
-#addImageLabel img:hover, #addFileLabel i:hover{
+#addImageLabel img:hover{
     transform: scale(2);
 }
 @media(max-width: 767px){
@@ -99,6 +118,10 @@
         max-width: 400px;
         width: 100vw;
     }
+    .myRow>div label{
+        text-align: center;
+    }
+
 }
 
 
