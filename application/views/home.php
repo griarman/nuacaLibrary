@@ -15,7 +15,15 @@
                     <div class="card-body">
                         <ul>
                             <?php foreach ($value['chairs'] as $k => $v):?>
-                                <li id="<?= $v['id']?>"><?= $v['name']?></li>
+                                <li id="chair-<?= $v['id']?>" class="chairs"><?= $v['name']?></li>
+                                <div class="subjects subjectClosed" >
+                                    <?php foreach ($v['subjects'] as $kSub => $vSub): ?>
+                                    <div class="subject">
+                                        <i class="fas fa-angle-right"></i>
+                                        <div id="subject-<?=$vSub['id']?>"><?=$vSub['name']?></div>
+                                    </div>
+                                    <?php endforeach;?>
+                                </div>
                             <?php endforeach;?>
                         </ul>
                     </div>
@@ -61,3 +69,4 @@
         </table>
     </div>
 </div>
+<script src="./assets/js/user/home.js"></script>

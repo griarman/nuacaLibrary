@@ -1,0 +1,19 @@
+.subjects{
+    margin-left: 15px;
+}
+.subjects>div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+.subjects>div:hover{
+    text-decoration: underline;
+}
+.subjects>div>i{
+    color: #bbb;
+    margin-right: 5px;
+}
+.subjectClosed{
+     display: none!important;
+ }

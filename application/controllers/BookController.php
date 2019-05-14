@@ -56,5 +56,7 @@ class BookController extends CI_Controller
                                                                      $this->add_book_model->addKeyWord(['keyword' => $value]);
             $this->add_book_model->addKeyBook(['bookId' => $bookId, 'keywordId' => $keyWordId]);
         }
+        foreach ($subjects as $value)
+            $this->add_book_model->addBookSubject(['bookId' => $bookId, 'subjectId' => $value]);
     }
 }

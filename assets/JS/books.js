@@ -106,6 +106,12 @@ $(document).ready(function(){
             cache:false,
             processData:false,
             contentType:false
+        }).done((data) => {
+            if (data === 'error1'){
+
+            }else if(data === 'error2'){
+
+            }
         })
     });
     function checkFields(field) {

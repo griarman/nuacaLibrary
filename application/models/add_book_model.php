@@ -25,4 +25,8 @@ class add_book_model extends CI_Model
     {
         $this->db->insert('keywordbook', $data);
     }
+    public function addBookSubject($data)
+    {
+        $this->db->insert('subjectbook', $data);
+    }
 }

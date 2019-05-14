@@ -8,8 +8,11 @@
     <title>NUACALibrary</title>
     <link rel="icon"  href="./favicon.png">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/fonts/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/user/header.css">
+    <link rel="stylesheet" href="./assets/css/user/home.css">
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
+    <script src="./assets/js/sweetAlert.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
 </head>
 <body>
