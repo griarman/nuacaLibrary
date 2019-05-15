@@ -35,36 +35,36 @@
     <div class="col-md-8">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th scope="col">Նկար</th>
-                <th scope="col">Անուն</th>
-                <th scope="col">Հեղինակ</th>
-                <th scope="col">Ամբիոն</th>
-                <th scope="col">Ներբեռնել</th>
-            </tr>
+                <tr>
+                    <th scope="col">Նկար</th>
+                    <th scope="col">Անուն</th>
+                    <th scope="col">Հեղինակ</th>
+                    <th scope="col">Տարեթիվ</th>
+                    <th scope="col">Ներբեռնել</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
-                <td>Անուն</td>
-                <td>Հեղինակ</td>
-                <td>Ամբիոն</td>
-                <td>Ներբեռնել</td>
-            </tr>
-            <tr>
-                <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
-                <td>Անուն</td>
-                <td>Հեղինակ</td>
-                <td>Ամբիոն</td>
-                <td>Ներբեռնել</td>
-            </tr>
-            <tr>
-                <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
-                <td>Անուն</td>
-                <td>Հեղինակ</td>
-                <td>Ամբիոն</td>
-                <td>Ներբեռնել3
-            </tr>
+                <tr>
+                    <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
+                    <td>Անուն</td>
+                    <td>Հեղինակ</td>
+                    <td>Ամբիոն</td>
+                    <td><i class="fas fa-download"></i></td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
+                    <td>Անուն</td>
+                    <td>Հեղինակ</td>
+                    <td>Ամբիոն</td>
+                    <td><i class="fas fa-download"></i></td>
+                </tr>
+                <tr>
+                    <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
+                    <td>Անուն</td>
+                    <td>Հեղինակ</td>
+                    <td>Ամբիոն</td>
+                    <td><i class="fas fa-download"></i></td>
+                </tr>
             </tbody>
         </table>
     </div>

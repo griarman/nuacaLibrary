@@ -17,3 +17,9 @@
 .subjectClosed{
      display: none!important;
  }
+
+/*    Books   */
+
+tbody th>img{
+    width: 100px;
+}
