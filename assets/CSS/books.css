@@ -62,6 +62,7 @@
 .myRow>div textarea{
     padding: 5px;
     max-height: 300px;
+    min-height: 100px;
 }
 #keyWords{
     margin-top: 5px;

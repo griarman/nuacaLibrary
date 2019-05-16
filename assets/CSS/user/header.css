@@ -27,3 +27,39 @@
 .table td, .table th{
     vertical-align: middle!important;
 }
+.more{
+    padding: 5px;
+}
+
+/*   Modal   */
+
+.swal2-container{
+    z-index: 9999999!important;
+}
+
+#searchFields{
+    max-width: 100%
+
+}
+#nameAuthor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#nameAuthor>div{
+    display: flex;
+    flex-direction: column;
+}
+#dateSelect{
+    width: 100%;
+    margin: 10px 0;
+}
+#dateSelect>select, #subjectSel{
+    width: 100%;
+}
+@media(max-width: 471px){
+    #nameAuthor>div{
+        width: 100%;
+    }
+}

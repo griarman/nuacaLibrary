@@ -14,6 +14,7 @@
     <script src="./assets/js/jquery-3.3.1.min.js"></script>
     <script src="./assets/js/sweetAlert.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
+    <script src='./assets/js/user/header.js'></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -38,6 +39,7 @@
 
         </ul>
         <form class="form-inline my-2 my-lg-0">
+            <button type="button" class="btn btn-info" id="more">Մանրամասն</button>
             <input class="form-control mr-sm-2" type="search" placeholder="Որոնում" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Որոնում</button>
         </form>

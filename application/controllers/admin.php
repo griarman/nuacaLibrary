@@ -54,6 +54,7 @@ class Admin extends CI_Controller
         $this->load->model('add_subject_model');
         $data['title'] = 'Ավելացնել Առարկա';
         $data['subjects'] = $this->global_model->getSubjects();
+        $data['chairs'] = $this->global_model->getChairs();
         foreach ($data['subjects'] as $key => $value)
         {
             $data['subjects'][$key]['parents'] = $this->global_model->getFullInformation($value['id'])[0];
