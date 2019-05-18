@@ -13,7 +13,7 @@ $(document).ready(function(){
                 id
             }
         }).done(function(data){
-            console.log(data);
+            // console.log(data);
             let tbody = $('tbody');
             tbody.empty();
             for(let i = 0; i < data.length; i++) {
@@ -22,7 +22,7 @@ $(document).ready(function(){
                 let name = $(`<td>${data[i].name}</td>`);
                 let author = $(`<td>${data[i].author}</td>`);
                 let date = $(`<td>${data[i].dateOfRelease}</td>`);
-                let download = $(`<td><i class="fas fa-download"></i></td>`);
+                let download = $(`<td><a href="./books/${data[i].src}" download><i class="fas fa-download"></i></a></td>`);
                 tbody.append(tr.append(image, name, author, date, download));
             }
         })

@@ -90,7 +90,7 @@ $(document).ready(function(){
                 return;
         }
         let form = new FormData();
-        // console.log(name, author, description, subjects, year);
+
         form.append('name', name);
         form.append('author', author);
         form.append('description', description);
@@ -106,7 +106,7 @@ $(document).ready(function(){
             cache:false,
             processData:false,
             contentType:false
-        }).done((data) => {
+        }).done( data => {
             if (data === 'error1'){
 
             }else if(data === 'error2'){

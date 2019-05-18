@@ -66,6 +66,7 @@
                         <div>
                             <label for="keyWord">Ավելացնել բանալի բառեր</label>
                             <input type="text" id="keyWord" placeholder="Ավելացնել բանալի բառեր">
+                            <button><i class="fas fa-plus"></i></button>
                             <div id="keyWords"></div>
                         </div>
                     </div>

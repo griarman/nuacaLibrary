@@ -17,9 +17,34 @@ class Search_model extends CI_Model
         }
         return $books;
     }
-    private function getBookInfo($id)
+    public function getAllBooks()
     {
-        return $this->db->get_where('books',['id' => $id])->result_array();
+        $books = $this->getBookInfo();
+        foreach($books as $key => $value)
+        {
+                $id = $this->getSubjectIds($value['id']);
+                foreach($id as $k => $v)
+                    $id[$k] = $v['subjectId'];
+                $subjects = $this->getSubjectsName($id);
+                $books[$key]['subjects'] = $subjects;
+        }
+        return array_reverse($books);
+    }
+    private function getSubjectsName($id)
+    {
+        $this->db->where_in('id', $id);
+        return $this->db->get('subject')->result_array();
+    }
+    private function getSubjectIds($id)
+    {
+        $this->db->where(['bookId', $id]);
+        $this->db->select('subjectId');
+        $this->db->from('subjectbook');
+        return $this->db->get()->result_array();
+    }
+    private function getBookInfo($id = null)
+    {
+        return $id ? $this->db->get_where('books',['id' => $id])->result_array() : $this->db->get('books')->result_array();
     }
 
 }

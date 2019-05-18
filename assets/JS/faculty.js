@@ -68,9 +68,11 @@ $(document).ready(function(){
             );
             return;
         }
+        let tag = $('.id');
+        let i = +tag.eq(tag.length - 1).text().trim();
         let faculties = $('.faculties');
         let faculty = $(`<div class="faculty d-flex" id="${res}"></div>`);
-        let id = $(`<div class="id">${res}</div>`);
+        let id = $(`<div class="id">${i + 1}</div>`);
         let facultyName = $(`<div class="facultyName">${name}</div>`);
         let edit = $(`<div class="edit"><i class="fas fa-pen-alt"></i></div>`);
         let del = $(`<div class="del"><i class="fas fa-trash-alt"></i></div>`);

@@ -41,9 +41,7 @@ class Admin extends CI_Controller
         $data['faculties'] = $this->global_model->getFaculties();
         foreach ($data['faculties'] as $key => $value)
         {
-            if(!empty($chairs = $this->global_model->getChairs($value['id']))){
-                $data['faculties'][$key]['chairs'] = $chairs;
-            }
+            $data['faculties'][$key]['chairs'] = (!empty($chairs = $this->global_model->getChairs($value['id'])))? $chairs: [];
         }
         $this->load->view('admin/chairs',$data);
     }
@@ -70,7 +68,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Ավելացնել Գիրք';
         $this->load->view('admin/books',$data);
     }
-    private function correct($name,$arr)
+    private function correct($name, $arr)
     {
         if(!empty($arr)){
             redirect(base_url()."admin/$name");

@@ -16,4 +16,8 @@ class Search extends CI_Controller
         echo json_encode($this->search_model->searchBySubject($id));
 
     }
+    public function getAllBooks()
+    {
+        echo json_encode($this->search_model->getAllBooks());
+    }
 }

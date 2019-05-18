@@ -39,34 +39,31 @@
                     <th scope="col">Նկար</th>
                     <th scope="col">Անուն</th>
                     <th scope="col">Հեղինակ</th>
-                    <th scope="col">Տարեթիվ</th>
+                    <th scope="col">Կարճ նկարագրություն</th>
                     <th scope="col">Ներբեռնել</th>
                 </tr>
             </thead>
             <tbody>
+            <?php foreach ($books as $key => $value):?>
                 <tr>
-                    <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
-                    <td>Անուն</td>
-                    <td>Հեղինակ</td>
-                    <td>Ամբիոն</td>
-                    <td><i class="fas fa-download"></i></td>
+                    <th scope="row"><img src="./books/images/<?= $value['image']?>" alt="" width="100"></th>
+                    <td title="<?= $value['name']?>"><?= $value['name']?></td>
+                    <td title="<?= $value['author']?>"><?= $value['author']?></td>
+                    <td title="Ցույց տալ">
+                        <i class="fas fa-eye" title="Ցույց տալ"></i>
+                        <div class="bookShow" style="display: none">
+                            <div class="dateOfRelease"><?= $value['dateOfRelease']?></div>
+                            <div class="addedDate"><?= $value['addedDate']?></div>
+                            <div class="description"><?= $value['description']?></div>
+                            <div></div>
+                        </div>
+                    </td>
+                    <td><a href="./books/<?=$value['src']?>" download=""><i class="fas fa-download"></i></a></td>
                 </tr>
-                <tr>
-                    <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
-                    <td>Անուն</td>
-                    <td>Հեղինակ</td>
-                    <td>Ամբիոն</td>
-                    <td><i class="fas fa-download"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row"><img src="assets/images/book-example.jpg" alt="" width="100"></th>
-                    <td>Անուն</td>
-                    <td>Հեղինակ</td>
-                    <td>Ամբիոն</td>
-                    <td><i class="fas fa-download"></i></td>
-                </tr>
+            <?php endforeach;?>
             </tbody>
         </table>
     </div>
 </div>
 <script src="./assets/js/user/home.js"></script>
+<pre>

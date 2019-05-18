@@ -40,7 +40,7 @@
                 </div>
                 <?php foreach ($faculties as $key => $value): ?>
                 <div class="faculty d-flex" id="<?= $value['id']?>">
-                    <div class="id"><?= $value['id']?></div>
+                    <div class="id"><?= $key + 1?></div>
                     <div class="facultyName"><?= $value['name']?></div>
                     <div class="edit"><i class="fas fa-pen-alt"></i></div>
                     <div class="del"><i class="fas fa-trash-alt"></i></div>
