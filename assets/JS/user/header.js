@@ -10,7 +10,7 @@ $(document).ready(function(){
             let name = element.text();
             subjects.push([id, name]);
         });
-        console.log(subjects)
+        // console.log(subjects)
         for(let i = 0; i < subjects.length; i++){
             subject += `<option value="${subjects[i][0]}">${subjects[i][1]}</option>`
         }
@@ -44,9 +44,38 @@ $(document).ready(function(){
                         </select>
                     </div>             
                 </div>  `,
-            showConfirmButton: true,
             confirmButtonText: 'Որոնել',
+            showConfirmButton: true,
 
-        });
+        })
+            .then((result)=>{
+                if(result.value){
+                    let releaseDate = $('#releaseDate').val(),
+                        subjectSel = $('#subjectSel').val(),
+                        bookName = $('#bookName').val().trim(),
+                        authorName = $('#authorName').val().trim();
+                    if(!releaseDate && !subjectSel && !bookName && !authorName){
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Լրացրեք գոնե մեկ դաշտ'
+                        });
+                    }else{
+                        $.ajax({
+                            url: '/nuacaLibrary/search/advancedSearch',
+                            method: 'post',
+                            data: {
+                                bookName,
+                                authorName,
+                                releaseDate,
+                                subjectSel
+                            }
+
+                        }).done(function(){
+
+                        });
+                    }
+                }
+            })
     })
 });

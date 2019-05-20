@@ -14,10 +14,38 @@ class Search extends CI_Controller
     {
         $id = addslashes(trim($this->input->post('id', true)));
         echo json_encode($this->search_model->searchBySubject($id));
-
     }
     public function getAllBooks()
     {
         echo json_encode($this->search_model->getAllBooks());
+    }
+    public function advancedSearch()
+    {
+        $bookName = addslashes(trim($this->input->post('bookName', true)))?: null;
+        $bookName = $bookName ?  preg_replace('/\s+/',' ',$bookName ): null;
+        $authorName = addslashes(trim($this->input->post('authorName', true)))?: null;
+        $authorName = $authorName ? preg_replace('/\s+/',' ',$bookName ): null;
+        $releaseDate = addslashes(trim($this->input->post('releaseDate', true)))?: null;
+        $subjectSel = addslashes(trim($this->input->post('subjectSel', true)))?: null;
+        if(empty($bookName) && empty($authorName) && empty($releaseDate) && empty($subjectSel)){
+            echo json_encode('error1');
+            die;
+        }
+        !$subjectSel ?: $ids = $this->search_model->getIdsBySubjectId($subjectSel);
+        $dateText =  $releaseDate ? "dateOfRelease = $releaseDate" : '';
+        $idText = '';
+        if(!empty($ids)){
+            foreach ($ids as $key => $value)
+                $ids[$key] = $value['bookId'];
+            $idText = 'id IN('.implode($ids).')';
+        }
+        $nameText = $bookName ? "name LIKE '%{$bookName}%'" : '';
+        $authorText = $authorName ? "author LIKE '%{$authorName}%'" : '';
+        $data = array_filter([$idText, $nameText, $authorText, $dateText], function ($v){
+            return !empty($v);
+        });
+        $where = implode(' AND ', $data);
+//        echo $where;
+        echo json_encode($this->search_model->getBooksWhere($where));
     }
 }

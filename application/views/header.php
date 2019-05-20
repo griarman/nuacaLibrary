@@ -27,16 +27,9 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
+            <!--<li class="nav-item active">
                 <a class="nav-link" href="#">Գլխավոր <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Մուտք գործել</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Հետադարձ կապ</a>
-            </li>
-
+            </li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <button type="button" class="btn btn-info" id="more">Մանրամասն</button>

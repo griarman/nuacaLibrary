@@ -66,4 +66,3 @@
     </div>
 </div>
 <script src="./assets/js/user/home.js"></script>
-<pre>

@@ -7,6 +7,7 @@ class Home extends CI_Controller
     {
         parent::__construct();
         $this->load->model('global_model');
+        $this->load->model('search_model');
     }
     public function index()
     {
@@ -19,6 +20,7 @@ class Home extends CI_Controller
                 $data['faculties'][$key]['chairs'][$k]['subjects'] = $this->global_model->getSubjects($v['id']);
             }
         }
+        $data['books'] = $this->search_model->getAllBooks();
         $this->load->view('header', $data);
         $this->load->view('home');
     }
