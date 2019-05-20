@@ -11,6 +11,7 @@ class FacultyController extends CI_Controller
     public function addFaculty()
     {
         $name = addslashes(trim($this->input->post('newFaculty', true)));
+        $name = $name ? preg_replace('/\s+/',' ',$name ):'';
         if(!$this->add_faculty_model->checkFaculty($name))
         {
             echo $this->add_faculty_model->addFaculty($name);

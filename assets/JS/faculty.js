@@ -1,6 +1,15 @@
 $(document).ready(function(){
     $('#addFaculty').click(function(){
         let newFaculty = $(this).prev().val().trim();
+        if(!newFaculty || !newFaculty.length ){
+            Swal.fire(
+                'Լրացրեք անունը!',
+                'Այս պայմանը պարտադիր է!',
+                'error'
+            );
+            return;
+        }
+        if(!checkName(newFaculty)) return;
         if(!newFaculty) {
             Swal.fire(
                 'Լրացրեք ֆակուլտետի անունը!',
@@ -13,7 +22,17 @@ $(document).ready(function(){
     });
     $('.del').click(delFaculty);
     $('.edit').click(updFaculty);
-
+    function checkName(name){
+        if(!(/^[ա-ֆ\s]{4,150}$/i.test(name))){
+            Swal.fire(
+                'Ոչ թույլատրելի սիմվոլներ!',
+                'Թույլատրվում են միայն ա-ֆ, 0-9 և նվազագույնը 4 սիմվոլ',
+                'error'
+            );
+            return false;
+        }
+        return true
+    }
     function myAjax(url , data, dataType = 'html'){
         $.ajax({
             url,

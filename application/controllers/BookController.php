@@ -13,6 +13,7 @@ class BookController extends CI_Controller
     public function addBook()
     {
         $name = addslashes(trim($this->input->post('name', true)));
+        $name = $name ? preg_replace('/\s+/',' ',$name ):'';
         $author = addslashes(trim($this->input->post('author', true)));
         $desc = addslashes(trim($this->input->post('description', true)));
         $year = addslashes(trim($this->input->post('year', true)));

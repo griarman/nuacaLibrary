@@ -14,6 +14,7 @@ class SubjectController extends CI_Controller
     public function addSubject()
     {
         $subject = addslashes(trim($this->input->post('subject', true)));
+        $subject = $subject ? preg_replace('/\s+/',' ',$subject ):'';
         $chairId = addslashes(trim($this->input->post('chairId', true)));
 //        $arr = ['ա','բ','գ','դ','ե','զ','է','ը','թ','ժ','ի','լ','խ','ծ','կ','հ','ձ','ղ','ճ','մ','յ',
 //            'ն','շ','ո','չ','պ','ջ','ռ','ս','վ','տ','ր','ց','ու','փ','ք','և','օ','ֆ'];

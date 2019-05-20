@@ -13,6 +13,7 @@ class ChairsController extends CI_Controller
     public function addChair()
     {
         $name = addslashes(trim($this->input->post('name', true)));
+        $name = $name ? preg_replace('/\s+/',' ',$name ):'';
         $facultyId = addslashes(trim($this->input->post('facultyId', true)));
         if(!$this->regexp($name)){
             echo 'error2';

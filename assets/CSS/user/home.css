@@ -27,3 +27,6 @@ td, th{
     width: 20%;
     text-align: center;
 }
+.fa-eye{
+    cursor: pointer;
+}
