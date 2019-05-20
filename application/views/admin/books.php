@@ -32,6 +32,8 @@
                             <label for="bookName">Գրքի անուն*</label>
                             <input type="text" id="bookName" placeholder="Գրքի անուն">
                         </div>
+                    </div>
+                    <div class="myRow">
                         <div>
                             <label for="authorName">Գրքի հեղինակ*</label>
                             <input type="text" id="authorName" placeholder="Գրքի հեղինակ">
@@ -66,7 +68,7 @@
                         <div>
                             <label for="keyWord">Ավելացնել բանալի բառեր</label>
                             <input type="text" id="keyWord" placeholder="Ավելացնել բանալի բառեր">
-                            <button><i class="fas fa-plus"></i></button>
+                            <button id="addKeyWord"><i class="fas fa-plus"></i></button>
                             <div id="keyWords"></div>
                         </div>
                     </div>

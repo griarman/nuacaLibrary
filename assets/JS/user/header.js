@@ -10,7 +10,6 @@ $(document).ready(function(){
             let name = element.text();
             subjects.push([id, name]);
         });
-        // console.log(subjects)
         for(let i = 0; i < subjects.length; i++){
             subject += `<option value="${subjects[i][0]}">${subjects[i][1]}</option>`
         }
@@ -45,37 +44,86 @@ $(document).ready(function(){
                     </div>             
                 </div>  `,
             confirmButtonText: 'Որոնել',
+            cancelButtonText: 'X',
             showConfirmButton: true,
+            showCancelButton: true,
 
-        })
-            .then((result)=>{
-                if(result.value){
-                    let releaseDate = $('#releaseDate').val(),
-                        subjectSel = $('#subjectSel').val(),
-                        bookName = $('#bookName').val().trim(),
-                        authorName = $('#authorName').val().trim();
-                    if(!releaseDate && !subjectSel && !bookName && !authorName){
-                        Swal.fire({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Լրացրեք գոնե մեկ դաշտ'
-                        });
-                    }else{
-                        $.ajax({
-                            url: '/nuacaLibrary/search/advancedSearch',
-                            method: 'post',
-                            data: {
-                                bookName,
-                                authorName,
-                                releaseDate,
-                                subjectSel
-                            }
+        }).then((result)=>{
+            if(result.value){
+                let releaseDate = $('#releaseDate').val(),
+                    subjectSel = $('#subjectSel').val(),
+                    bookName = $('#bookName').val().trim(),
+                    authorName = $('#authorName').val().trim();
+                if(!releaseDate && !subjectSel && !bookName && !authorName){
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Լրացրեք գոնե մեկ դաշտ'
+                    });
+                }else{
+                    $.ajax({
+                        url: '/nuacaLibrary/search/advancedSearch',
+                        method: 'post',
+                        dataType:'json',
+                        data: {
+                            bookName,
+                            authorName,
+                            releaseDate,
+                            subjectSel
+                        }
 
-                        }).done(function(){
-
-                        });
-                    }
+                    }).done(function(data){
+                        if(data === 'error1'){
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Լրացրեք գոնե մեկ դաշտ'
+                            });
+                            return;
+                        }
+                        print(data);
+                    });
                 }
-            })
-    })
+            }
+        })
+    });
+    $('#searchButton').click(function(){
+        let text = $(this).prev().val().trim();
+        if(!text) return;
+        $.ajax({
+            url: '/nuacaLibrary/search/simpleSearch',
+            method: 'post',
+            dataType:'json',
+            data: {
+                text
+            }
+
+        }).done(function(data){
+            if(data === 'error') return;
+            print(data);
+        });
+    });
+    function print(data){
+        let tbody = $('tbody');
+        tbody.empty();
+        for(let i = 0; i < data.length; i++) {
+            let tr = $(`<tr></tr>`);
+            let image = $(`<th><img src="./books/images/${data[i].image}" alt=""></th>`);
+            let name = $(`<td>${data[i].name}</td>`);
+            let author = $(`<td>${data[i].author}</td>`);
+            let date = $(`
+                    <td title="Ցույց տալ">
+                        <i class="fas fa-eye" title="Ցույց տալ"></i>
+                        <div class="bookShow" style="display: none">
+                            <div class="dateOfRelease">${data[i].dateOfRelease}</div>
+                            <div class="addedDate">${data[i].addedDate}</div>
+                            <div class="description">${data[i].description}<?= $value['description']?></div>
+                            <div></div>
+                        </div>
+                    </td>
+            `);
+            let download = $(`<td><a href="./books/${data[i].src}" download><i class="fas fa-download"></i></a></td>`);
+            tbody.append(tr.append(image, name, author, date, download));
+        }
+    }
 });

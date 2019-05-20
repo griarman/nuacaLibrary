@@ -45,7 +45,24 @@ class Search extends CI_Controller
             return !empty($v);
         });
         $where = implode(' AND ', $data);
-//        echo $where;
         echo json_encode($this->search_model->getBooksWhere($where));
+    }
+    public function simpleSearch()
+    {
+        $text = addslashes(trim($this->input->post('text', true)));
+        if(empty($text)){
+            echo json_encode('error');
+            die;
+        }
+        $text = !$text ?:  preg_replace('/\s+/',' ',$text);
+        $arr = explode(' ', $text);
+
+        foreach($arr as $key => $value)
+            $arr[$key] = "keyword LIKE '%{$value}%'";
+
+        $where = implode(' OR ', $arr);
+        $select = "SELECT * FROM `books` WHERE name LIKE '%$text%' OR id IN (SELECT bookId FROM keywords,keywordbook WHERE keywords.id = keywordId AND ($where))";
+        echo json_encode($this->search_model->getBooksQuery($select));
+
     }
 }

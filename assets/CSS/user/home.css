@@ -23,3 +23,7 @@
 tbody th>img{
     width: 100px;
 }
+td, th{
+    width: 20%;
+    text-align: center;
+}

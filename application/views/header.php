@@ -31,10 +31,12 @@
                 <a class="nav-link" href="#">Գլխավոր <span class="sr-only">(current)</span></a>
             </li>-->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button type="button" class="btn btn-info" id="more">Մանրամասն</button>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+        <div class="form-inline my-2 my-lg-0">
+            <button type="button" class="btn btn-info btn-myInfo" id="more">Մանրամասն</button>
             <input class="form-control mr-sm-2" type="search" placeholder="Որոնում" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Որոնում</button>
-        </form>
+            <button class="btn btn-outline-success my-2 my-sm-0 btn-myInfo" type="submit" id="searchButton">Որոնում</button>
+<!--        </form>-->
+        </div>
     </div>
 </nav>

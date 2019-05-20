@@ -58,5 +58,10 @@ class Search_model extends CI_Model
         $this->db->where($where);
         return $this->db->get('books')->result_array();
     }
+    public function getBooksQuery($query)
+    {
+        return $this->db->query($query)->result_array();
+    }
+
 
 }

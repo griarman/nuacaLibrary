@@ -19,6 +19,27 @@ $(document).ready(function(){
            );
        }
     });
+    $('#addKeyWord').click(function(){
+        let keyWord = $('#keyWord');
+        let text = keyWord.val().trim();
+        let keyWords = $('#keyWords');
+        if(checkName(text) && keyWords.children().length < 15){
+            let div = $(`<div class="keyTag">${text}</div>`);
+            let del = $('<i class="fas fa-trash-alt del"></i>');
+            keyWords.append(div.append(del));
+            keyWord.val('');
+            del.click(function(){
+                $(this).parent().remove();
+            })
+        }
+        if(keyWords.children().length >= 15){
+            Swal.fire(
+                "Առավելագույնը 15 բանալի բառ",
+                'Դուք լրացրել եք առավելագույն քանակությամբ բանալի բառեր ',
+                'error'
+            );
+        }
+    });
     $('#addImage').change(function(){
         let image = $(this)[0].files[0];
         if(!image){

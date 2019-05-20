@@ -55,7 +55,7 @@
     font-weight: bold;
     cursor: pointer;
 }
-.myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button{
+.myRow>div input, .myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button{
     max-width: 400px;
     width: 40vw;
 }
@@ -115,7 +115,7 @@
     .myRow>div{
         width: 100%;
     }
-    .myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button{
+    .myRow>div select, .myRow>div textarea, #keyWord, .myRow>div button, .myRow>div input{
         max-width: 400px;
         width: 100vw;
     }
