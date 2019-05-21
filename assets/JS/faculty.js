@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $('#faculty').change(function(){
+        let text = $(this).val().trim();
+        $(this).val(text[0].toUpperCase()+text.substr(1));
+    });
     $('#addFaculty').click(function(){
         let newFaculty = $(this).prev().val().trim();
         if(!newFaculty || !newFaculty.length ){

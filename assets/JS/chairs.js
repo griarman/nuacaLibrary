@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $('.myInp').change(function(){
+        let text = $(this).val().trim();
+        $(this).val(text[0].toUpperCase()+text.substr(1));
+    });
     $('.myBtn').click(function(){
        let th = $(this);
        let name = th.closest('#addInputs').find('.myInp').val().trim();
