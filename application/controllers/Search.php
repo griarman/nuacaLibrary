@@ -37,10 +37,11 @@ class Search extends CI_Controller
         if(!empty($ids)){
             foreach ($ids as $key => $value)
                 $ids[$key] = $value['bookId'];
-            $idText = 'id IN('.implode($ids).')';
+            $idText = 'id IN('.implode(',', $ids).')';
         }
         $nameText = $bookName ? "name LIKE '%{$bookName}%'" : '';
         $authorText = $authorName ? "author LIKE '%{$authorName}%'" : '';
+//        echo $idText;die;
         $data = array_filter([$idText, $nameText, $authorText, $dateText], function ($v){
             return !empty($v);
         });

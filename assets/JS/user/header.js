@@ -54,7 +54,8 @@ $(document).ready(function(){
                     subjectSel = $('#subjectSel').val(),
                     bookName = $('#bookName').val().trim(),
                     authorName = $('#authorName').val().trim();
-                console.log(releaseDate, subjectSel, bookName , !authorName);
+                // console.log(releaseDate, subjectSel, bookName , !authorName);
+                console.log(subjectSel)
                 if(!releaseDate && !subjectSel && !bookName && !authorName){
                     Swal.fire({
                         type: 'error',
