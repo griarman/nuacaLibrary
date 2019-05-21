@@ -146,6 +146,9 @@ $(document).ready(function(){
                 });
                 $('input, select, textarea').val('');
                 $('#keyWords').empty();
+                $('#addImageLabel img').attr('src', '../assets/images/choose Image.png');
+                $('#fileName').text('');
+                $('#addBookFile').value = '';
             }
         })
     });
