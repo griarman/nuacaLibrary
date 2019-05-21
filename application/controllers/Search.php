@@ -41,10 +41,13 @@ class Search extends CI_Controller
         }
         $nameText = $bookName ? "name LIKE '%{$bookName}%'" : '';
         $authorText = $authorName ? "author LIKE '%{$authorName}%'" : '';
-//        echo $idText;die;
         $data = array_filter([$idText, $nameText, $authorText, $dateText], function ($v){
             return !empty($v);
         });
+        if (empty($data)){
+            echo json_encode([]);
+            die;
+        }
         $where = implode(' AND ', $data);
         echo json_encode($this->search_model->getBooksWhere($where));
     }
