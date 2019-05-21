@@ -26,21 +26,20 @@ $(document).ready(function(){
            type: 'info',
            html:`
                 <div>
-                    <div>
-                        <span>Հրատարակում։ </span>
+                    <div class="d-flex justify-content-between">
+                        <span><b>Հրատարակում։ </b></span>
                         <span>${dateOfRelease}</span>
                     </div>
-                    <div>
-                        <span>Ավելացման օր։ </span>
+                    <div class="d-flex justify-content-between">
+                        <span><b>Ավելացման օր։ </b></span>
                         <span>${addedDate}</span>
                     </div>
-                    <div>
-                        <span>Նկարագրություն։ </span>
+                    <div class="d-flex justify-content-between">
+                        <span><b>Նկարագրություն։ </b></span>
                         <span>${description}</span>
                     </div>
                 </div>  
            `,
-           confirmButton:true,
            confirmButtonText: 'Լավ'
        })
     }

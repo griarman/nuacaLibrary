@@ -54,6 +54,7 @@ $(document).ready(function(){
                     subjectSel = $('#subjectSel').val(),
                     bookName = $('#bookName').val().trim(),
                     authorName = $('#authorName').val().trim();
+                console.log(releaseDate, subjectSel, bookName , !authorName);
                 if(!releaseDate && !subjectSel && !bookName && !authorName){
                     Swal.fire({
                         type: 'error',
@@ -81,7 +82,7 @@ $(document).ready(function(){
                             });
                             return;
                         }
-                        print(data);
+                        printBooks(data);
                     });
                 }
             }
@@ -111,16 +112,16 @@ $(document).ready(function(){
             type: 'info',
             html:`
                 <div>
-                    <div>
-                        <span>Հրատարակում։ </span>
+                    <div class="d-flex justify-content-between">
+                        <span class="abc"><b>Հրատարակում։ </b></span>
                         <span>${dateOfRelease}</span>
                     </div>
-                    <div>
-                        <span>Ավելացման օր։ </span>
+                    <div class="d-flex justify-content-between">
+                        <span><b>Ավելացման օր։ </b></span>
                         <span>${addedDate}</span>
                     </div>
-                    <div>
-                        <span>Նկարագրություն։ </span>
+                    <div class="d-flex justify-content-between">
+                        <span><b>Նկարագրություն։ </b></span>
                         <span>${description}</span>
                     </div>
                 </div>  

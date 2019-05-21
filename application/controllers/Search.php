@@ -24,7 +24,7 @@ class Search extends CI_Controller
         $bookName = addslashes(trim($this->input->post('bookName', true)))?: null;
         $bookName = $bookName ?  preg_replace('/\s+/',' ',$bookName ): null;
         $authorName = addslashes(trim($this->input->post('authorName', true)))?: null;
-        $authorName = $authorName ? preg_replace('/\s+/',' ',$bookName ): null;
+        $authorName = $authorName ? preg_replace('/\s+/',' ',$authorName ): null;
         $releaseDate = addslashes(trim($this->input->post('releaseDate', true)))?: null;
         $subjectSel = addslashes(trim($this->input->post('subjectSel', true)))?: null;
         if(empty($bookName) && empty($authorName) && empty($releaseDate) && empty($subjectSel)){

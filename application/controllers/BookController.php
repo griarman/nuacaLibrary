@@ -31,11 +31,14 @@ class BookController extends CI_Controller
             if(!$this->regexp($value,'digits'))die('error1');
         foreach ($keyWords as $value)
             if(!$this->regexp($value,'bookReg'))die('error1');
-        if(empty($file = $_FILES['file']) || $file['type'] !== 'application/pdf' || $file['error'])
-            die('error2');
+        if(empty($file = $_FILES['file']) || $file['type'] !== 'application/pdf' || $file['error']){
+            print_r($_FILES);
+            echo 'error2';
+            die;
+        }
         $src = date('YmdHis').mt_rand().'.pdf';
         $data = [
-            'name' => $name,
+            'name' => ucfirst($name),
             'description' => $desc,
             'author' => $author,
             'dateOfRelease' => $year,
@@ -59,5 +62,7 @@ class BookController extends CI_Controller
         }
         foreach ($subjects as $value)
             $this->add_book_model->addBookSubject(['bookId' => $bookId, 'subjectId' => $value]);
+
+        echo 'ok';
     }
 }

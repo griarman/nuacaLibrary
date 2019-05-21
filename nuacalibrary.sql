@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2019 at 07:58 PM
+-- Generation Time: May 21, 2019 at 01:25 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -21,9 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `nuacalibrary`
 --
-  CREATE DATABASE nuacalibrary;
-  USE nuacalibrary;
-
+	CREATE DATABASE nuacalibrary;
+	USE nuacalibrary;
 -- --------------------------------------------------------
 
 --
@@ -60,7 +59,7 @@ CREATE TABLE `admintoken` (
 --
 
 INSERT INTO `admintoken` (`id`, `token`, `expireDate`) VALUES
-(6, '74480fad45ec805f5285557a823393e20496f36bd16b1afc3b151d43e5de218ead10b8b9aa4cf1c2291f096f2097919106d70f47bedf49e53dd49d13f5c2cdac', 1556926194);
+(10, '864fede08c89cd922697d62e18f6adac3c2a9ba34e729b9cdf621ff2e49fac51ca3e78108353294211ab79fa034d00e5eef2ca05ad2ada2ea04f23ed3a0d86da', 1558423839);
 
 -- --------------------------------------------------------
 
@@ -75,8 +74,16 @@ CREATE TABLE `books` (
   `description` varchar(300) NOT NULL,
   `image` varchar(200) NOT NULL DEFAULT 'no-image.png',
   `addedDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `dateOfRelease` year(4) NOT NULL
+  `dateOfRelease` year(4) NOT NULL,
+  `src` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `name`, `author`, `description`, `image`, `addedDate`, `dateOfRelease`, `src`) VALUES
+(1, 'Անուն', 'Հեղինակ', '120 Էջեր', '201905141638082078701014.png', '2019-05-14 16:38:08', 1913, '201905141638081587789478.pdf');
 
 -- --------------------------------------------------------
 
@@ -157,6 +164,19 @@ CREATE TABLE `keywordbook` (
   `keywordId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `keywordbook`
+--
+
+INSERT INTO `keywordbook` (`bookId`, `keywordId`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7);
+
 -- --------------------------------------------------------
 
 --
@@ -167,6 +187,19 @@ CREATE TABLE `keywords` (
   `id` int(11) NOT NULL,
   `keyword` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `keywords`
+--
+
+INSERT INTO `keywords` (`id`, `keyword`) VALUES
+(1, 'ewrewr'),
+(2, 'werewrwe'),
+(3, 'ewrewrwe'),
+(4, 'ewrewrew'),
+(5, 'werewr'),
+(6, 'werwe'),
+(7, 'ewrwerew');
 
 -- --------------------------------------------------------
 
@@ -185,7 +218,6 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `name`, `chairId`) VALUES
-(1, 'Հայոց քաղաքական պատմություն', 2),
 (2, 'Փիլիսոփայություն', 17),
 (3, 'Հայոց լեզու և խոսքի մշակում', 27),
 (4, 'Ռուսաց լեզու', 27),
@@ -220,6 +252,14 @@ CREATE TABLE `subjectbook` (
   `bookId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subjectbook`
+--
+
+INSERT INTO `subjectbook` (`bookId`, `subjectId`) VALUES
+(1, 2),
+(1, 3);
 
 --
 -- Indexes for dumped tables
@@ -298,13 +338,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `admintoken`
 --
 ALTER TABLE `admintoken`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `chairs`
@@ -322,7 +362,7 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `keywords`
 --
 ALTER TABLE `keywords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `subject`

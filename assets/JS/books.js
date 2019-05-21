@@ -129,17 +129,31 @@ $(document).ready(function(){
             contentType:false
         }).done( data => {
             if (data === 'error1'){
-
+                Swal.fire({
+                    type:'error',
+                    text:'Լրացրեք բոլոր դաշտերը'
+                })
             }else if(data === 'error2'){
-
+                Swal.fire({
+                    type:'error',
+                    text:'Ընտրեք ֆայլը'
+                })
+            }
+            else {
+                Swal.fire({
+                    type:'success',
+                    text:'Գիրքն ավելացրած է'
+                });
+                $('input, select, textarea').val('');
+                $('#keyWords').empty();
             }
         })
     });
     function checkFields(field) {
-        return /^[ա-ֆa-zа-я\s0-9]{4,150}$/i.test(field);
+        return /^[ա-ֆa-zа-я\s0-9\.\s\․,ևշ\-]{4,150}$/i.test(field);
     }
     function checkName(name){
-        if(!(/^[ա-ֆa-zа-я\s0-9\.]{4,150}$/i.test(name))){
+        if(!(/^[ա-ֆa-zа-я\s0-9\.,և]{4,150}$/i.test(name))){
             Swal.fire(
                 'Ոչ թույլատրելի սիմվոլներ!',
                 'Թույլատրվում են միայն ա-ֆ,a-z,а-я 0-9',
@@ -149,4 +163,8 @@ $(document).ready(function(){
         }
         return true
     }
+    $('#bookName, #authorName, #description').change(function(){
+        let text = $(this).val().trim();
+        $(this).val(text[0].toUpperCase()+text.substr(1));
+    })
 });
