@@ -10,7 +10,6 @@ trait GlobalTrait{
             'year' => '/^(1\d)|(20)\d{2}$/',
             'digits' => '/^\d{1,3}$/'
         ][$type];
-//        echo preg_match($regexp, $str).' ';
         return preg_match($regexp, $str);
     }
 }
